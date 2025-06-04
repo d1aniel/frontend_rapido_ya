@@ -1,0 +1,86 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between flex-wrap">
+      <h3 class="ml-4">Registro de Pedidos</h3>
+      <div class="mt-2 mr-2">
+        <a
+          pButton
+          pRipple
+          label="Crear Pedido"
+          icon="pi pi-plus"
+          class="p-button-info"
+          [routerLink]="['/pedidos/nuevo']"
+        ></a>
+      </div>
+    </div>
+  </ng-template>
+
+  <p-table [value]="pedidos" responsiveLayout="scroll" class="mt-2">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Cliente (ID)</th>
+        <th>Fecha</th>
+        <th>Dirección de Entrega</th>
+        <th>Estado</th>
+        <th>Repartidor</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-pedido>
+      <tr>
+        <td>{{ pedido.id }}</td>
+        <td>{{ pedido.cliente }}</td>
+        <td>{{ pedido.fecha_hora | date:'short' }}</td>
+        <td>{{ pedido.direccion_entrega }}</td>
+        <td>{{ pedido.estado }}</td>
+        <td>{{ pedido.repartidor ?? 'Sin asignar' }}</td>
+        <td class="text-center">
+          <a
+            pButton
+            pRipple
+            icon="pi pi-sync"
+            class="mr-2"
+            [routerLink]="['/pedidos', pedido.id]"
+            pTooltip="Editar pedido"
+            tooltipPosition="top"
+          ></a>
+
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-danger mr-2"
+            (click)="eliminar(pedido.id)"
+            pTooltip="Eliminar pedido"
+            tooltipPosition="top"
+          ></button>
+
+          <!-- Botones para pedido_producto y pedido_producto_servicio -->
+          <a
+            pButton
+            pRipple
+            label="Productos"
+            icon="pi pi-box"
+            class="p-button-warning mr-2"
+            [routerLink]="['/pedido_producto/pedidos', pedido.id]"
+            pTooltip="Ver productos del pedido"
+            tooltipPosition="top"
+          ></a>
+
+          <a
+            pButton
+            pRipple
+            label="Servicios"
+            icon="pi pi-cog"
+            class="p-button-help"
+            [routerLink]="['/pedido_producto_servicio', pedido.id]"
+            pTooltip="Ver servicios del pedido"
+            tooltipPosition="top"
+          ></a>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

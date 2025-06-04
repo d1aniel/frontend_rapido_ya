@@ -22,7 +22,7 @@ export class AsideComponent {
       {
         label: 'Pedido Producto',
         icon: 'pi pi-fw pi-truck',
-        routerLink: '/pedido_producto'
+        routerLink: '/pedidos'
       },
       {
         label: 'Actividad Recorrido',
