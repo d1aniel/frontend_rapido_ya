@@ -1,0 +1,55 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between flex-wrap">
+      <h3 class="ml-4">Registro de Clientes</h3>
+      <div class="mt-2 mr-2">
+        <a
+          pButton
+          pRipple
+          label="Crear Cliente"
+          icon="pi pi-user-plus"
+          class="p-button-info"
+          [routerLink]="['/clientes/nuevo']"
+        ></a>
+      </div>
+    </div>
+  </ng-template>
+
+  <p>
+    <p-table [value]="clientes" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>Dirección</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-cliente>
+        <tr>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.direccion }}</td>
+          <td>
+            <a
+              pButton
+              pRipple
+              icon="pi pi-sync"
+              class="mr-2"
+              [routerLink]="['/clientes/edit', cliente.id]"
+            ></a>
+
+            <button
+              pButton
+              pRipple
+              icon="pi pi-trash"
+              class="p-button-danger"
+              (click)="eliminar(cliente.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p>
+</p-card>
