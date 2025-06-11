@@ -64,8 +64,8 @@
             label="Productos"
             icon="pi pi-box"
             class="p-button-warning mr-2"
-            [routerLink]="['/pedido_producto/pedidos', pedido.id]"
-            pTooltip="Ver productos del pedido"
+            [routerLink]="['/productos/pedido', pedido.id]"
+            pTooltip="Ver productos"
             tooltipPosition="top"
           ></a>
 
@@ -75,10 +75,11 @@
             label="Servicios"
             icon="pi pi-cog"
             class="p-button-help"
-            [routerLink]="['/pedido_producto_servicio', pedido.id]"
-            pTooltip="Ver servicios del pedido"
+            [routerLink]="['/pedidos', pedido.id, 'mostrar-productos-servicios']"
+            pTooltip="Agregar servicios al pedido"
             tooltipPosition="top"
           ></a>
+
         </td>
       </tr>
     </ng-template>

@@ -25,10 +25,11 @@ export class ProductoServicioService {
   }
 
   update(id: number, data: any): Observable<ProductoServicio> {
-    return this.http.put<ProductoServicio>(`${this.base_path}${id}`, data);
+  return this.http.put<ProductoServicio>(`${this.base_path}${id}/`, data);
   }
 
   delete(id: number): Observable<ProductoServicio> {
     return this.http.delete<ProductoServicio>(`${this.base_path}${id}`);
   }
+
 }

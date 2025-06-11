@@ -1,0 +1,57 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between flex-wrap">
+      <h3 class="ml-4">Registro de Actividades</h3>
+      <div class="mt-2 mr-2">
+        <a
+          pButton
+          pRipple
+          label="Crear Actividad"
+          icon="pi pi-plus"
+          class="p-button-info"
+          [routerLink]="['/actividades/nuevo']"
+        ></a>
+      </div>
+    </div>
+  </ng-template>
+
+  <p-table [value]="actividades" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Hora Inicio</th>
+        <th>Duración</th>
+        <th>Recorrido (ID)</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-actividad>
+      <tr>
+        <td>{{ actividad.id }}</td>
+        <td>{{ actividad.descripcion }}</td>
+        <td>{{ actividad.hora_inicio }}</td>
+        <td>{{ actividad.duracion }}</td>
+        <td>{{ actividad.recorrido }}</td>
+        <td>
+          <a
+            pButton
+            pRipple
+            icon="pi pi-sync"
+            class="mr-2"
+            [routerLink]="['/actividades/edit', actividad.id]"
+          ></a>
+
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="eliminar(actividad.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

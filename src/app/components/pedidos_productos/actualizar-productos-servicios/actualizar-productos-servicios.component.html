@@ -1,0 +1,84 @@
+<p-card header="Actualizar Producto o Servicio" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <div class="grid">
+      <!-- Seleccionar Pedido -->
+      <div class="col-12 sm:col-6">
+        <label for="pedido">Pedido</label>
+        <p-dropdown 
+          [options]="pedidos" 
+          optionLabel="label"
+          formControlName="pedido"
+          placeholder="Seleccione un pedido"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+
+      <!-- Seleccionar Producto o Servicio -->
+      <div class="col-12 sm:col-6">
+        <label for="producto">Producto / Servicio</label>
+        <p-dropdown 
+          [options]="productosServicios" 
+          optionLabel="label"
+          formControlName="id_producto_servicio"
+          placeholder="Seleccione un producto o servicio"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="grid mt-3">
+      <!-- Cantidad -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-sort-numeric-up"></i></span>
+          <input
+            type="number"
+            pInputText
+            formControlName="cantidad"
+            placeholder="Cantidad"
+            min="1"
+          />
+        </div>
+      </div>
+
+      <!-- Precio Unitario -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+          <input
+            type="text"
+            pInputText
+            formControlName="precio_unitario"
+            placeholder="Precio unitario"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Actualizar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

@@ -1,0 +1,87 @@
+<p-card header="Crear Repartidor" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <!-- Título de sección -->
+    <h5 class="mt-2 mb-3">Datos del repartidor</h5>
+
+    <div class="grid">
+      <!-- Nombre -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" pInputText formControlName="nombre" placeholder="Nombre del repartidor" />
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+          <input type="text" pInputText formControlName="telefono" placeholder="Teléfono" />
+        </div>
+      </div>
+    </div>
+
+    <h5 class="mt-4 mb-2">Datos del Vehículo</h5>
+
+    <div formGroupName="vehiculo">
+      <div class="grid">
+        <!-- Marca -->
+        <div class="col-12 sm:col-6">
+          <div class="p-inputgroup mb-3">
+            <span class="p-inputgroup-addon"><i class="pi pi-car"></i></span>
+            <input type="text" pInputText formControlName="marca" placeholder="Marca del vehículo" />
+          </div>
+        </div>
+
+        <!-- Modelo -->
+        <div class="col-12 sm:col-6">
+          <div class="p-inputgroup mb-3">
+            <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+            <input type="text" pInputText formControlName="modelo" placeholder="Modelo del vehículo" />
+          </div>
+        </div>
+
+        <!-- Placa -->
+        <div class="col-12 sm:col-6">
+          <div class="p-inputgroup mb-3">
+            <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+            <input type="text" pInputText formControlName="placa" placeholder="Placa del vehículo" />
+          </div>
+        </div>
+
+        <!-- Tipo -->
+        <div class="col-12 sm:col-6">
+          <div class="p-inputgroup mb-3">
+            <span class="p-inputgroup-addon"><i class="pi pi-tag"></i></span>
+            <input type="text" pInputText formControlName="tipo" placeholder="Tipo del vehículo (Moto, Auto...)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Guardar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

@@ -1,0 +1,83 @@
+<p-card header="Crear Actividad" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <div class="grid">
+      <!-- Descripción -->
+      <div class="col-12 sm:col-6">
+        <label for="descripcion">Descripción</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+          <input id="descripcion" type="text" pInputText formControlName="descripcion" />
+        </div>
+      </div>
+
+      <!-- Hora Inicio -->
+      <div class="col-12 sm:col-6">
+        <label for="hora_inicio">Hora de Inicio</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+          <input id="hora_inicio" type="time" pInputText formControlName="hora_inicio" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Duración -->
+       <div class="col-12 sm:col-6">
+         <label for="duracion">Duración (HH:mm:ss)</label>
+           <div class="p-inputgroup mb-3">
+              <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+                <input
+                id="duracion"
+                type="text"
+                pInputText
+                formControlName="duracion"
+                placeholder="00:00:00"
+                pattern="^([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)$"
+                title="Formato: HH:mm:ss"
+                />
+           </div>
+  </div>
+
+
+
+      <!-- Recorrido -->
+      <div class="col-12 sm:col-6">
+        <label for="recorrido">Recorrido</label>
+        <p-dropdown
+          [options]="recorridos"
+          optionLabel="label"
+          placeholder="Seleccione un recorrido"
+          formControlName="recorrido"
+          inputId="recorrido"
+          class="w-full mb-3"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Crear"
+        icon="pi pi-save"
+        severity="success"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

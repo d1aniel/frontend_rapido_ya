@@ -1,0 +1,21 @@
+<p-card header="Actividad y Recorrido" [style]="{ width: '100%' }" class="mt-4">
+  <div class="flex flex-column md:flex-row justify-content-center gap-3 p-3">
+    <button
+      pButton
+      label="Recorridos"
+      icon="pi pi-map"
+      (click)="irARecorrido()"
+      severity="info"
+      class="w-full md:w-auto"
+    ></button>
+
+    <button
+      pButton
+      label="Actividades"
+      icon="pi pi-calendar"
+      (click)="irAActividad()"
+      severity="success"
+      class="w-full md:w-auto"
+    ></button>
+  </div>
+</p-card>

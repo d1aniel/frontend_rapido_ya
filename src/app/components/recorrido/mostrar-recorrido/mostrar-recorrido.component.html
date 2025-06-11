@@ -1,0 +1,59 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between flex-wrap">
+      <h3 class="ml-4">Registro de Recorridos</h3>
+      <div class="mt-2 mr-2">
+        <a
+          pButton
+          pRipple
+          label="Crear Recorrido"
+          icon="pi pi-plus"
+          class="p-button-info"
+          [routerLink]="['/recorridos/nuevo']"
+        ></a>
+      </div>
+    </div>
+  </ng-template>
+
+  <p-table [value]="recorridos" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+        <th>Pedido (ID)</th>
+        <th>Repartidor (ID)</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-recorrido>
+      <tr>
+        <td>{{ recorrido.id }}</td>
+        <td>{{ recorrido.fecha }}</td>
+        <td>{{ recorrido.hora_inicio }}</td>
+        <td>{{ recorrido.hora_fin }}</td>
+        <td>{{ recorrido.pedido }}</td>
+        <td>{{ recorrido.repartidores.length > 0 ? recorrido.repartidores[0] : 'Sin repartidor' }}</td>
+        <td>
+          <a
+            pButton
+            pRipple
+            icon="pi pi-sync"
+            class="mr-2"
+            [routerLink]="['/recorridos/edit', recorrido.id]"
+          ></a>
+
+          <button
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            class="p-button-danger"
+            (click)="eliminar(recorrido.id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

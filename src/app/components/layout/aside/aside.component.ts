@@ -27,12 +27,12 @@ export class AsideComponent {
       {
         label: 'Actividad Recorrido',
         icon: 'pi pi-fw pi-map-marker',
-        routerLink: '/actividad_recorrido'
+        routerLink: '/actividad-recorrido'
       },
       {
         label: 'Repartidor Vehículo',
         icon: 'pi pi-fw pi-car',
-        routerLink: '/repartidor_vehiculo'
+        routerLink: '/repartidores'
       }
     ];
   }

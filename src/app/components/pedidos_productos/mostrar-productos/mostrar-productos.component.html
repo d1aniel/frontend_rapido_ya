@@ -1,0 +1,55 @@
+<p-card class="w-12 h-full">
+  <ng-template pTemplate="header">
+    <div class="flex justify-content-between flex-wrap">
+      <h3 class="ml-4">Registro de Productos</h3>
+      <div class="mt-2 mr-2">
+        <a
+          pButton
+          pRipple
+          label="Crear Producto"
+          icon="pi pi-plus"
+          class="p-button-info"
+          [routerLink]="['/productos/nuevo']"
+        ></a>
+      </div>
+    </div>
+  </ng-template>
+
+  <p>
+    <p-table [value]="productos" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-producto>
+        <tr>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precio | currency:'USD':'symbol' }}</td>
+          <td>
+            <a
+              pButton
+              pRipple
+              icon="pi pi-sync"
+              class="mr-2"
+              [routerLink]="['/productos/edit', producto.id]"
+            ></a>
+
+            <button
+              pButton
+              pRipple
+              icon="pi pi-trash"
+              class="p-button-danger"
+              (click)="eliminar(producto.id)"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p>
+</p-card>

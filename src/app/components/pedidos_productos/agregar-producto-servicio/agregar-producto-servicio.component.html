@@ -1,1 +1,102 @@
-<p>agregar-producto-servicio works!</p>
+<p-card header="Registrar Detalle de Pedido" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+    <div class="grid">
+      <!-- Pedido -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-shopping-cart"></i></span>
+          <p-dropdown
+            [options]="pedidos"
+            optionLabel="label"
+            placeholder="Selecciona un pedido"
+            formControlName="pedido"
+            class="w-full"
+            styleClass="w-full"
+          ></p-dropdown>
+        </div>
+        <small *ngIf="form.get('pedido')?.invalid && form.get('pedido')?.touched" class="p-error">
+          Selecciona un pedido válido.
+        </small>
+      </div>
+
+      <!-- Producto o Servicio -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-box"></i></span>
+          <p-dropdown
+            [options]="productosServicios"
+            optionLabel="label"
+            placeholder="Selecciona producto o servicio"
+            formControlName="id_producto_servicio"
+            class="w-full"
+            styleClass="w-full"
+          ></p-dropdown>
+        </div>
+        <small *ngIf="form.get('id_producto_servicio')?.invalid && form.get('id_producto_servicio')?.touched" class="p-error">
+          Selecciona un producto o servicio.
+        </small>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Cantidad -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-sort-numeric-up"></i></span>
+          <input
+            type="number"
+            pInputText
+            formControlName="cantidad"
+            placeholder="Cantidad"
+            min="1"
+          />
+        </div>
+        <small *ngIf="form.get('cantidad')?.invalid && form.get('cantidad')?.touched" class="p-error">
+          Ingresa una cantidad válida (mayor que 0).
+        </small>
+      </div>
+
+      <!-- Precio Unitario -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+          <input
+            type="number"
+            pInputText
+            formControlName="precio_unitario"
+            placeholder="Precio unitario"
+            min="0"
+            step="0.01"
+          />
+        </div>
+        <small *ngIf="form.get('precio_unitario')?.invalid && form.get('precio_unitario')?.touched" class="p-error">
+          Precio inválido.
+        </small>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Guardar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+  </form>
+</p-card>

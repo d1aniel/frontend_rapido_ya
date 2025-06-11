@@ -16,6 +16,11 @@ export class DetallePedidoService {
     return this.http.get<PedidoProductoServicio[]>(this.base_path);
   }
 
+  getByPedidoId(pedidoId: string): Observable<PedidoProductoServicio[]> {
+  return this.http.get<PedidoProductoServicio[]>(`${this.base_path}?pedido=${pedidoId}`);
+  }
+
+
   getOne(id: number): Observable<PedidoProductoServicio> {
     return this.http.get<PedidoProductoServicio>(`${this.base_path}${id}`);
   }
@@ -25,7 +30,7 @@ export class DetallePedidoService {
   }
 
   update(id: number, data: any): Observable<PedidoProductoServicio> {
-    return this.http.put<PedidoProductoServicio>(`${this.base_path}${id}`, data);
+  return this.http.put<PedidoProductoServicio>(`${this.base_path}${id}/`, data); // con barra final
   }
 
   delete(id: number): Observable<PedidoProductoServicio> {

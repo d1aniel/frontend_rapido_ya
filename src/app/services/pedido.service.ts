@@ -17,7 +17,7 @@ export class PedidoService {
   }
 
   getOne(id: number): Observable<Pedido> {
-    return this.http.get<Pedido>(`${this.base_path}${id}`);
+    return this.http.get<Pedido>(`${this.base_path}${id}/`);
   }
 
   create(data: any): Observable<Pedido> {
@@ -25,10 +25,10 @@ export class PedidoService {
   }
 
   update(id: number, data: any): Observable<Pedido> {
-    return this.http.put<Pedido>(`${this.base_path}${id}`, data);
+    return this.http.put<Pedido>(`${this.base_path}${id}/`, data);
   }
 
   delete(id: number): Observable<Pedido> {
-    return this.http.delete<Pedido>(`${this.base_path}${id}`);
+    return this.http.delete<Pedido>(`${this.base_path}${id}/`);
   }
 }

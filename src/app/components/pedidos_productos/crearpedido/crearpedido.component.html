@@ -1,1 +1,106 @@
-<p>crearpedido works!</p>
+<p-card header="Crear Pedido" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+    <div class="grid">
+      <!-- Fecha -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+          <input type="date" pInputText formControlName="fecha" />
+        </div>
+      </div>
+
+      <!-- Hora -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+          <input type="time" pInputText formControlName="hora" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Dirección de entrega -->
+      <div class="col-12">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-map-marker"></i></span>
+          <input
+            type="text"
+            pInputText
+            formControlName="direccion_entrega"
+            placeholder="Dirección de entrega"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Estado -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+          <input
+            type="text"
+            pInputText
+            formControlName="estado"
+            placeholder="Estado del pedido"
+          />
+        </div>
+      </div>
+
+      <!-- Cliente -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3 w-full">
+            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <p-dropdown
+                 [options]="clientes"
+                 optionLabel="label"
+                 placeholder="Selecciona un cliente"
+                 formControlName="cliente"
+                 class="w-full"
+                 styleClass="w-full"
+                ></p-dropdown>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+      <!-- Repartidor/Vehículo -->
+        <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-3 w-full">
+                <span class="p-inputgroup-addon"><i class="pi pi-truck"></i></span>
+                    <p-dropdown
+                     [options]="repartidoresVehiculos"
+                     optionLabel="label"
+                     placeholder="Selecciona repartidor y vehículo"
+                     formControlName="repartidor_vehiculo"
+                     class="w-full"
+                     styleClass="w-full"
+                    ></p-dropdown>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Guardar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+  </form>
+</p-card>

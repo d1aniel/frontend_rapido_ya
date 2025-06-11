@@ -1,0 +1,88 @@
+<p-card header="Actualizar Recorrido" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <div class="grid">
+      <!-- Fecha -->
+      <div class="col-12 sm:col-6">
+        <label for="fecha">Fecha</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+          <input id="fecha" type="date" pInputText formControlName="fecha" />
+        </div>
+      </div>
+
+      <!-- Hora Inicio -->
+      <div class="col-12 sm:col-6">
+        <label for="hora_inicio">Hora Inicio</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+          <input id="hora_inicio" type="time" pInputText formControlName="hora_inicio" />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Hora Fin -->
+      <div class="col-12 sm:col-6">
+        <label for="hora_fin">Hora Fin</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+          <input id="hora_fin" type="time" pInputText formControlName="hora_fin" />
+        </div>
+      </div>
+
+      <!-- Pedido -->
+      <div class="col-12 sm:col-6">
+        <label for="pedido">Pedido</label>
+        <p-dropdown
+          [options]="pedidos"
+          optionLabel="label"
+          placeholder="Seleccione un pedido"
+          formControlName="pedido"
+          inputId="pedido"
+          class="w-full mb-3"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Repartidores -->
+      <div class="col-12 sm:col-6">
+        <label for="repartidores">Repartidores</label>
+        <p-multiSelect
+          [options]="repartidores"
+          optionLabel="label"
+          placeholder="Seleccione uno o más repartidores"
+          formControlName="repartidores"
+          inputId="repartidores"
+          class="w-full mb-3"
+        ></p-multiSelect>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Actualizar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

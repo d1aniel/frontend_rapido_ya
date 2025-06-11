@@ -1,0 +1,86 @@
+<p-card header="Actualizar Actividad" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <!-- Descripción -->
+    <div class="col-12 sm:col-6">
+  <label for="descripcion">Descripción</label>
+  <div class="p-inputgroup mb-3">
+    <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+    <input id="descripcion" type="text" pInputText formControlName="descripcion" />
+  </div>
+</div>
+
+
+    <!-- Selección de Recorrido -->
+    <div class="field mb-3">
+      <label for="recorrido">Recorrido</label>
+      <p-dropdown
+        [options]="recorridos"
+        optionLabel="label"
+        formControlName="recorrido"
+        placeholder="Seleccione un recorrido"
+        class="w-full"
+      ></p-dropdown>
+    </div>
+
+    <!-- Hora Inicio y Duración -->
+    <div class="grid mt-3 align-items-center">
+      <!-- Hora Inicio -->
+      <div class="col-12 sm:col-6">
+        <label for="hora_inicio">Hora Inicio</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+          <input
+            id="hora_inicio"
+            type="time"
+            pInputText
+            formControlName="hora_inicio"
+            class="w-full"
+            placeholder="Hora Inicio"
+          />
+        </div>
+      </div>
+
+      <!-- Duración -->
+      <div class="col-12 sm:col-6">
+        <label for="duracion">Duración (HH:mm:ss)</label>
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-hourglass"></i></span>
+          <input
+            id="duracion"
+            type="text"
+            pInputText
+            formControlName="duracion"
+            class="w-full"
+            placeholder="Ejemplo: 01:30:00"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Actualizar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

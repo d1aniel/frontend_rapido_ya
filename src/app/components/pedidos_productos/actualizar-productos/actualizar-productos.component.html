@@ -1,0 +1,76 @@
+<p-card header="Actualizar Producto" [style]="{ width: '100%' }">
+  <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <div class="grid">
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-tag"></i></span>
+          <input 
+            class="w-12" 
+            type="text" 
+            pInputText 
+            formControlName="nombre" 
+            placeholder="Nombre del Producto"  
+            title="Nombre del Producto" 
+          />
+        </div>
+      </div>
+
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+          <input 
+            class="w-12" 
+            type="text" 
+            pInputText 
+            formControlName="descripcion" 
+            placeholder="Descripción del Producto" 
+            title="Descripción del Producto" 
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-1">
+          <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+          <input 
+            class="w-12" 
+            type="number" 
+            pInputText 
+            formControlName="precio" 
+            placeholder="Precio del Producto"  
+            title="Precio del Producto"
+            min="0"
+            step="0.01"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-content-center flex-wrap">
+      <button 
+        pButton 
+        pRipple
+        label="Actualizar"
+        icon="pi pi-save"
+        severity="info"
+        class="mr-4"
+        type="submit"
+      ></button>
+
+      <button 
+        pButton 
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        class="mr-4"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form> 
+</p-card>

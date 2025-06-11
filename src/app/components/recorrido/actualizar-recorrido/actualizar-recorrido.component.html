@@ -1,0 +1,107 @@
+<p-card header="Actualizar Recorrido" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <!-- Selección de Pedido -->
+    <div class="grid">
+      <div class="col-12 sm:col-6">
+        <label for="pedido">Pedido</label>
+        <p-dropdown 
+          [options]="pedidos" 
+          optionLabel="label"
+          formControlName="pedido"
+          placeholder="Seleccione un pedido"
+          class="w-full"
+        ></p-dropdown>
+      </div>
+
+      <!-- Selección de Repartidores -->
+      <div class="col-12 sm:col-6">
+        <label for="repartidores">Repartidores</label>
+        <p-multiSelect
+          [options]="repartidores"
+          optionLabel="label"
+          formControlName="repartidores"
+          placeholder="Seleccione uno o varios repartidores"
+          class="w-full"
+        ></p-multiSelect>
+      </div>
+    </div>
+
+<!-- Fecha y Horas -->
+<div class="grid mt-3 align-items-center">
+  <!-- Fecha -->
+  <div class="col-12 sm:col-4">
+    <label for="fecha">Fecha</label>
+    <div class="p-inputgroup mb-3">
+      <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+      <input
+        id="fecha"
+        type="date"
+        pInputText
+        formControlName="fecha"
+        class="w-full"
+        placeholder="Selecciona fecha"
+      />
+    </div>
+  </div>
+
+  <!-- Hora Inicio -->
+  <div class="col-12 sm:col-4">
+    <label for="hora_inicio">Hora Inicio</label>
+    <div class="p-inputgroup mb-3">
+      <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+      <input
+        id="hora_inicio"
+        type="time"
+        pInputText
+        formControlName="hora_inicio"
+        class="w-full"
+        placeholder="Hora Inicio"
+      />
+    </div>
+  </div>
+
+  <!-- Hora Fin -->
+  <div class="col-12 sm:col-4">
+    <label for="hora_fin">Hora Fin</label>
+    <div class="p-inputgroup mb-3">
+      <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+      <input
+        id="hora_fin"
+        type="time"
+        pInputText
+        formControlName="hora_fin"
+        class="w-full"
+        placeholder="Hora Fin"
+      />
+    </div>
+  </div>
+</div>
+
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Actualizar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>

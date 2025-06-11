@@ -1,1 +1,74 @@
-<p>agregar-producto works!</p>
+<p-card header="Crear Producto" [style]="{ width: '100%' }">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+
+    <div class="grid">
+      <!-- Nombre -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-tag"></i></span>
+          <input
+            type="text"
+            pInputText
+            formControlName="nombre"
+            placeholder="Nombre del producto"
+          />
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-align-left"></i></span>
+          <input
+            type="text"
+            pInputText
+            formControlName="descripcion"
+            placeholder="Descripción"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Precio -->
+      <div class="col-12 sm:col-6">
+        <div class="p-inputgroup mb-3">
+          <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+          <input
+            type="number"
+            pInputText
+            formControlName="precio"
+            placeholder="Precio"
+            min="0"
+            step="0.01"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex justify-content-center flex-wrap mt-3">
+      <button
+        pButton
+        pRipple
+        label="Guardar"
+        icon="pi pi-save"
+        severity="info"
+        type="submit"
+        class="mr-3"
+        [disabled]="form.invalid"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Cancelar"
+        icon="pi pi-times-circle"
+        severity="warning"
+        type="button"
+        (click)="cancel()"
+      ></button>
+    </div>
+
+  </form>
+</p-card>
